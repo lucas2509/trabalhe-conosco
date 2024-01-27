@@ -1,0 +1,18 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: brain_agriculture
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+  app:
+    container_name: trabalhe-conosco
+    restart: always
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on :
+      - postgres
